@@ -1,0 +1,91 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(90, 93, 95);
+}
+
+.box1{
+    width: 500px;
+    height: 300px;
+    background-color: rgb(234, 109, 0);
+    position: absolute;
+    left: 500px ;
+    top: 500px;
+
+    
+
+    
+}
+.box2{
+    width: 250px;
+    height: 150px;
+    background-color: black;
+    position: absolute;
+       left: 120px;
+       top: 75px;
+       text-align: center;
+       color: blanchedalmond;
+
+
+}
+
+.box3{
+    width: 150px;
+    height: 150px;
+    background-color: blueviolet;
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+
+}
+
+.box4{
+
+    width: 150px;
+    height: 150px;
+    background-color: rgb(67, 226, 43);
+    position: absolute;
+    right: 2px;
+   
+}
+
+.box5{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(109, 89, 198);
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+
+   
+}
+
+.box6{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(238, 11, 11);
+    position: absolute;
+   
+}
+
+.bell{
+    width: 100px;
+    position: absolute;
+    left: 600px;
+    top: 250px;
+}
+
+ .image{
+     width: 200px;
+     position: absolute;
+     left: 900px;
+     top: 250px;
+    color: aliceblue;
+    text-align: center;
+     
+ }
+
+ .image:h2{
+    color: aliceblue;
+    text-align: center;
+ }

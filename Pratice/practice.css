@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.bluebox{
+    width: 500px;
+    height: 250px;
+    background-color: grey;
+    position: relative;
+   
+}
+
+.box2{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
+    left: 150px;
+    bottom: 110px;
+    
+}
+
+ p{
+    
+ }

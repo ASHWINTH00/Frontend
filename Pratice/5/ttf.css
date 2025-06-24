@@ -1,0 +1,29 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 200px;
+
+
+}
+
+.container{
+    width: 16rem;
+    height: 16rem;
+    background-color: black;
+    border-radius: 50%;
+     margin: 25px;
+}
+
+.corn{
+    width: 13rem;
+    height: 13rem;
+    background-color: aliceblue;
+    border-radius: 50%;
+    margin: 23px;
+}
+
+h2{
+  
+}

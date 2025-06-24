@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+       
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(198, 182, 214);
+        }
+        .search-container{
+            margin-top: 100px;
+            position: relative;
+
+        }
+        .search-container input{
+            width: 350px;
+            font-size: 18px;
+            padding: 11px 20px;
+            border-radius: 25px;
+            margin-top: -2px;
+            
+
+        }
+        .search-container input:focus{
+            width: 450px;
+            background-color: rgb(243, 250, 208);
+        }
+        .search-container i{
+           
+        }
+        .search-container button{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+             cursor: pointer;
+             position: absolute;
+             right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="search-container">
+        <input type="text" placeholder="Search...">
+     <button>   <i class="fa fa-search"></i></button>
+    </div>
+    
+</body>
+</html>

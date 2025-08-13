@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Deposit{
+
+        constructor (totalamount){
+
+            this.totalamount=totalamount;
+
+        }
+
+        withdraw(atm){
+            
+            console.log(this.totalamount-atm)
+        
+        }
+ 
+         deposit(mtm){
+            console.log(this.totalamount+mtm)
+         }
+       
+
+    }
+
+    let bank1= new Deposit(20000);
+    console.log(bank1.totalamount);
+    
+    bank1.withdraw(10000);
+
+    bank1.deposit(2000);
+     console.log(bank1.totalamount);
+     
+
+</script>
+</html>

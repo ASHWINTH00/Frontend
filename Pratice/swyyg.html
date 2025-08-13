@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiggy Clone - Food Delivery</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Variables */
+        :root {
+            --primary: #FC8019;
+            --secondary: #282C3F;
+            --light-gray: #F8F8F8;
+            --dark-gray: #686B78;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            z-index: 100;
+        }
+
+        .logo {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .login-btn {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            background-color: var(--light-gray);
+            padding: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .popular-cities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .popular-cities a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .popular-cities a:hover {
+            color: var(--primary);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 80%;
+            max-width: 500px;
+        }
+
+        /* Restaurants Section */
+        .restaurants {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .filter-btn {
+            background-color: var(--white);
+            color: var(--secondary);
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background-color: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .restaurant-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .restaurant-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .restaurant-info {
+            padding: 20px;
+        }
+
+        .restaurant-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .restaurant-cuisine {
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .restaurant-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #48C479;
+            color: var(--white);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* App Download Section */
+        .app-download {
+            display: flex;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 50px;
+        }
+
+        .app-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .app-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .app-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .app-stores {
+            display: flex;
+            gap: 20px;
+        }
+
+        .app-store-btn {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .app-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-image img {
+            width: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .hero-content {
+                padding: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-image {
+                margin-top: 30px;
+            }
+
+            .restaurants {
+                padding: 20px;
+            }
+
+            .app-download {
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+
+            .app-content {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+
+            .modal-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_284/Logo_f5xzza" alt="Swiggy Logo" class="logo" id="logo">
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Food</a>
+            <a href="#">Offers</a>
+            <a href="#">Help</a>
+        </nav>
+        <button class="login-btn" id="loginBtn">Login</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hungry? Order food from favourite restaurants near you.</h1>
+            <p>Order from your favorite restaurants & track on the go, with the all-new Swiggy app.</p>
+            
+            <div class="search-container">
+                <input type="text" id="locationInput" placeholder="Enter your delivery location">
+                <button id="findFoodBtn">Find Food</button>
+            </div>
+            
+            <p>POPULAR CITIES IN INDIA</p>
+            <div class="popular-cities" id="popularCities">
+                <a href="#">Ahmedabad</a>
+                <a href="#">Bangalore</a>
+                <a href="#">Chennai</a>
+                <a href="#">Delhi</a>
+                <a href="#">Gurgaon</a>
+                <a href="#">Hyderabad</a>
+                <a href="#">Kolkata</a>
+                <a href="#">Mumbai</a>
+                <a href="#">Pune</a>
+                <a href="#">& more.</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_2100,h_1500/portal/m/large_hero" alt="Food Delivery">
+        </div>
+    </section>
+
+    <!-- Restaurants Section -->
+    <section class="restaurants">
+        <h2 class="section-title">Restaurants Near You</h2>
+        
+        <div class="filters" id="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="fast-food">Fast Food</button>
+            <button class="filter-btn" data-filter="chinese">Chinese</button>
+            <button class="filter-btn" data-filter="north-indian">North Indian</button>
+            <button class="filter-btn" data-filter="south-indian">South Indian</button>
+            <button class="filter-btn" data-filter="desserts">Desserts</button>
+            <button class="filter-btn" data-filter="beverages">Beverages</button>
+            <button class="filter-btn" data-filter="healthy">Healthy</button>
+        </div>
+        
+        <div class="restaurant-grid" id="restaurantGrid">
+            <!-- Restaurant cards will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-download">
+        <div class="app-content">
+            <h2>Restaurants in your pocket</h2>
+            <p>Order from your favorite restaurants & track on the go, with the all-new Swiggy app.</p>
+            <div class="app-stores">
+                <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/portal_images/play_store_ipgej9" alt="Play Store" class="app-store-btn" id="playStoreBtn">
+                <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/portal_images/app_store_grqxjt" alt="App Store" class="app-store-btn" id="appStoreBtn">
+            </div>
+        </div>
+        <div class="app-image">
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_768,h_768/portal_images/pixel_phone_urmjjk" alt="Swiggy App">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Swiggy Blog</a></li>
+                    <li><a href="#">Bug Bounty</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Help & Support</a></li>
+                    <li><a href="#">Partner with us</a></li>
+                    <li><a href="#">Ride with us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Refund & Cancellation</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>We deliver to</h3>
+                <ul>
+                    <li><a href="#">Bangalore</a></li>
+                    <li><a href="#">Gurgaon</a></li>
+                    <li><a href="#">Hyderabad</a></li>
+                    <li><a href="#">Delhi</a></li>
+                    <li><a href="#">Mumbai</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <div class="social-icon" id="facebookIcon">f</div>
+                <div class="social-icon" id="linkedinIcon">in</div>
+                <div class="social-icon" id="twitterIcon">t</div>
+                <div class="social-icon" id="instagramIcon">ig</div>
+            </div>
+            <div class="copyright">© 2023 Swiggy Clone. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLoginModal">&times;</span>
+            <h2>Login to Swiggy</h2>
+            <form id="loginForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
+                    <input type="email" id="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="password" style="display: block; margin-bottom: 5px;">Password</label>
+                    <input type="password" id="password" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+                </div>
+                <button type="submit" style="background-color: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Restaurant Modal -->
+    <div class="modal" id="restaurantModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeRestaurantModal">&times;</span>
+            <div id="modalContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Restaurant Data
+        const restaurants = [
+            {
+                id: 1,
+                name: "Burger King",
+                cuisine: "Burgers, American, Fast Food",
+                deliveryTime: "30 mins",
+                rating: 4.2,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["fast-food"],
+                description: "Home of the Whopper! Burger King offers flame-grilled burgers made to order just the way you like them.",
+                menu: [
+                    { name: "Whopper", price: 199 },
+                    { name: "Chicken Fries", price: 149 },
+                    { name: "Veggie Burger", price: 159 }
+                ]
+            },
+            {
+                id: 2,
+                name: "McDonald's",
+                cuisine: "Burgers, Fast Food, Desserts",
+                deliveryTime: "25 mins",
+                rating: 4.0,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["fast-food", "desserts"],
+                description: "McDonald's is the world's leading global foodservice retailer with over 38,000 locations in over 100 countries.",
+                menu: [
+                    { name: "Big Mac", price: 189 },
+                    { name: "McAloo Tikki", price: 49 },
+                    { name: "McFlurry Oreo", price: 99 }
+                ]
+            },
+            {
+                id: 3,
+                name: "Domino's Pizza",
+                cuisine: "Pizza, Fast Food, Italian",
+                deliveryTime: "35 mins",
+                rating: 4.3,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["fast-food"],
+                description: "Domino's Pizza is an American pizza restaurant chain founded in 1960. It delivers pizza and other dishes.",
+                menu: [
+                    { name: "Margherita Pizza", price: 199 },
+                    { name: "Pepperoni Pizza", price: 299 },
+                    { name: "Veggie Pizza", price: 249 }
+                ]
+            },
+            {
+                id: 4,
+                name: "Haldiram's",
+                cuisine: "North Indian, Sweets, Snacks",
+                deliveryTime: "40 mins",
+                rating: 4.1,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["north-indian", "desserts"],
+                description: "Haldiram's is a well-known Indian sweets, snacks and restaurant brand with a strong presence worldwide.",
+                menu: [
+                    { name: "Raj Kachori", price: 120 },
+                    { name: "Paneer Tikka", price: 180 },
+                    { name: "Gulab Jamun", price: 60 }
+                ]
+            },
+            {
+                id: 5,
+                name: "Bikanervala",
+                cuisine: "North Indian, Sweets, Snacks",
+                deliveryTime: "45 mins",
+                rating: 4.0,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["north-indian", "desserts"],
+                description: "Bikanervala is a renowned name in Indian sweets and snacks, known for its authentic taste and quality.",
+                menu: [
+                    { name: "Chole Bhature", price: 150 },
+                    { name: "Dal Makhani", price: 180 },
+                    { name: "Rasmalai", price: 80 }
+                ]
+            },
+            {
+                id: 6,
+                name: "KFC",
+                cuisine: "Fried Chicken, Fast Food",
+                deliveryTime: "30 mins",
+                rating: 4.2,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["fast-food"],
+                description: "KFC is an American fast food restaurant chain that specializes in fried chicken.",
+                menu: [
+                    { name: "Hot Wings", price: 199 },
+                    { name: "Zinger Burger", price: 179 },
+                    { name: "Popcorn Chicken", price: 149 }
+                ]
+            },
+            {
+                id: 7,
+                name: "Mainland China",
+                cuisine: "Chinese, Asian",
+                deliveryTime: "40 mins",
+                rating: 4.4,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["chinese"],
+                description: "Mainland China is a fine dining Chinese restaurant chain offering authentic Chinese cuisine.",
+                menu: [
+                    { name: "Hakka Noodles", price: 220 },
+                    { name: "Szechuan Chicken", price: 280 },
+                    { name: "Vegetable Spring Roll", price: 180 }
+                ]
+            },
+            {
+                id: 8,
+                name: "Sagar Ratna",
+                cuisine: "South Indian, Vegetarian",
+                deliveryTime: "35 mins",
+                rating: 4.3,
+                image: "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/eqx3xw8j1n1nw5jqerhu",
+                categories: ["south-indian"],
+                description: "Sagar Ratna is a popular chain of vegetarian restaurants serving authentic South Indian cuisine.",
+                menu: [
+                    { name: "Masala Dosa", price: 120 },
+                    { name: "Idli Sambar", price: 80 },
+                    { name: "Filter Coffee", price: 50 }
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const logo = document.getElementById('logo');
+        const loginBtn = document.getElementById('loginBtn');
+        const locationInput = document.getElementById('locationInput');
+        const findFoodBtn = document.getElementById('findFoodBtn');
+        const popularCities = document.getElementById('popularCities');
+        const filters = document.getElementById('filters');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const restaurantGrid = document.getElementById('restaurantGrid');
+        const playStoreBtn = document.getElementById('playStoreBtn');
+        const appStoreBtn = document.getElementById('appStoreBtn');
+        const facebookIcon = document.getElementById('facebookIcon');
+        const linkedinIcon = document.getElementById('linkedinIcon');
+        const twitterIcon = document.getElementById('twitterIcon');
+        const instagramIcon = document.getElementById('instagramIcon');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const loginForm = document.getElementById('loginForm');
+        const restaurantModal = document.getElementById('restaurantModal');
+        const closeRestaurantModal = document.getElementById('closeRestaurantModal');
+        const modalContent = document.getElementById('modalContent');
+
+        // Current filter state
+        let currentFilter = 'all';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRestaurants();
+            addEventListeners();
+        });
+
+        // Load restaurants based on current filter
+        function loadRestaurants() {
+            restaurantGrid.innerHTML = '';
+            
+            let filteredRestaurants = restaurants;
+            if (currentFilter !== 'all') {
+                filteredRestaurants = restaurants.filter(restaurant => 
+                    restaurant.categories.includes(currentFilter)
+                );
+            }
+            
+            filteredRestaurants.forEach(restaurant => {
+                const card = document.createElement('div');
+                card.className = 'restaurant-card';
+                card.dataset.id = restaurant.id;
+                
+                card.innerHTML = `
+                    <img src="${restaurant.image}" alt="${restaurant.name}" class="restaurant-image">
+                    <div class="restaurant-info">
+                        <h3 class="restaurant-name">${restaurant.name}</h3>
+                        <p class="restaurant-cuisine">${restaurant.cuisine}</p>
+                        <div class="restaurant-details">
+                            <span>${restaurant.deliveryTime}</span>
+                            <span class="rating">${restaurant.rating} ★</span>
+                        </div>
+                    </div>
+                `;
+                
+                restaurantGrid.appendChild(card);
+            });
+        }
+
+        // Add event listeners
+        function addEventListeners() {
+            // Logo click
+            logo.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Login button click
+            loginBtn.addEventListener('click', () => {
+                loginModal.style.display = 'flex';
+            });
+            
+            // Close login modal
+            closeLoginModal.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+            
+            // Login form submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple validation
+                if (email && password) {
+                    alert(`Welcome back! You're now logged in.`);
+                    loginModal.style.display = 'none';
+                    loginBtn.textContent = 'My Account';
+                } else {
+                    alert('Please enter both email and password');
+                }
+            });
+            
+            // Find food button click
+            findFoodBtn.addEventListener('click', () => {
+                const location = locationInput.value.trim();
+                if (location) {
+                    alert(`Searching for restaurants near ${location}`);
+                    // In a real app, this would trigger an API call
+                } else {
+                    alert('Please enter a location');
+                }
+            });
+            
+            // Popular cities click
+            popularCities.querySelectorAll('a').forEach(city => {
+                city.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    locationInput.value = city.textContent.replace('& more.', '').trim();
+                });
+            });
+            
+            // Filter buttons click
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    loadRestaurants();
+                });
+            });
+            
+            // Restaurant card click
+            restaurantGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.restaurant-card');
+                if (card) {
+                    const restaurantId = parseInt(card.dataset.id);
+                    const restaurant = restaurants.find(r => r.id === restaurantId);
+                    showRestaurantDetails(restaurant);
+                }
+            });
+            
+            // Close restaurant modal
+            closeRestaurantModal.addEventListener('click', () => {
+                restaurantModal.style.display = 'none';
+            });
+            
+            // App store buttons
+            playStoreBtn.addEventListener('click', () => {
+                alert('Redirecting to Google Play Store');
+            });
+            
+            appStoreBtn.addEventListener('click', () => {
+                alert('Redirecting to Apple App Store');
+            });
+            
+            // Social media icons
+            facebookIcon.addEventListener('click', () => {
+                alert('Opening Facebook');
+            });
+            
+            linkedinIcon.addEventListener('click', () => {
+                alert('Opening LinkedIn');
+            });
+            
+            twitterIcon.addEventListener('click', () => {
+                alert('Opening Twitter');
+            });
+            
+            instagramIcon.addEventListener('click', () => {
+                alert('Opening Instagram');
+            });
+        }
+
+        // Show restaurant details in modal
+        function showRestaurantDetails(restaurant) {
+            modalContent.innerHTML = `
+                <h2>${restaurant.name}</h2>
+                <p style="color: var(--dark-gray); margin: 10px 0;">${restaurant.cuisine}</p>
+                <div style="display: flex; align-items: center; margin: 15px 0;">
+                    <span class="rating" style="margin-right: 20px;">${restaurant.rating} ★</span>
+                    <span>${restaurant.deliveryTime}</span>
+                </div>
+                <img src="${restaurant.image}" alt="${restaurant.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                <p style="margin-bottom: 20px;">${restaurant.description}</p>
+                <h3 style="margin-bottom: 15px;">Popular Items</h3>
+                <ul style="list-style: none; margin-bottom: 20px;">
+                    ${restaurant.menu.map(item => `
+                        <li style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+                            <span>${item.name}</span>
+                            <span>₹${item.price}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+                <button style="background-color: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold; font-size: 16px;">
+                    Add to Cart
+                </button>
+            `;
+            
+            restaurantModal.style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

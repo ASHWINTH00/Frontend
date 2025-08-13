@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  animation: moveBox 4s infinite;
+}
+
+@keyframes moveBox {
+  0%   { left: 0px; background-color: red; }
+  50%  { left: 200px; background-color: blue; }
+  100% { left: 0px; background-color: red; }
+}
+
+.fadeZoom {
+  opacity: 0;
+  transform: scale(0.5);
+  animation: fadeAndZoom 3s ease-out forwards;
+}
+
+@keyframes fadeAndZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+</style>
+<body>
+    <h1 class="fadeZoom">Welcome to My Website</h1>
+
+     <ol type="1">
+ <li >Monday</li>
+ <li>Tuesday</li>
+ <li>Wednesday</li>
+ </ol>
+ <ul>
+ <li>France</li>
+ <li>Germany</li>
+ <li>Italy</li>
+ </ul>
+ <dl>
+ <dt>Toyota</dt> 
+<dd>Japanese car brand</dd>
+ <dt>Armani</dt>
+ <dd>Italian fashion brand</dd>
+ </dl>
+ 	<output>Result</output>
+    <div class="box"></div>
+</body>
+</html>
+
+

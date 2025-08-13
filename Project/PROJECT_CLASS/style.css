@@ -1,0 +1,293 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto",sans-serif;
+}
+:root {
+    --bg-color: #f1f1f1;
+    --text: #333;
+    --white: #fff;
+
+    --active: #ff6600;
+    --active-dark: #bb4b00;
+    --normal: #555;
+
+}
+
+a{
+    text-decoration: none;
+    color: var(--white);
+}
+
+body{
+    padding: auto;
+    margin: auto;
+    background-color: var(--bg-color);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    background-color: var(--text);
+     
+}
+header img{
+  width: 100px;
+}
+.logo{
+    cursor: pointer;
+    font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--active);
+
+}
+
+.nav-links{
+ list-style-type: none;
+}
+
+.nav-links li{
+    display: inline;
+    padding: 0px 20px;
+}
+.nav-links li a.active {
+    color: var(--active);
+}
+.nav-links li a{
+    transition: 0.5s;
+    font-size: 18px;
+}
+
+.nav-links li a:hover{
+    color: var(--active);
+}
+
+.content{
+    display: grid;
+    grid-template-columns: 50% auto;
+    gap: 30px;
+    margin-top: 120px;
+    
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 20px;
+   
+
+}
+.content .content-left{
+    display: block;
+    width: 100%;
+}
+
+.content .content-left .info{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.content .content-left .info h2{
+    font-size: 60px;
+    font-family: sans-serif;
+    margin-bottom: 30px;
+}
+.content .content-left .info p{
+    font-size: 23px;
+    line-height: 2pc;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+.content .content-left button{
+    padding: 10px 12px;
+    background-color: var(--active-dark);
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.content .content-right{
+    display: block;
+    width: 100%;
+}
+
+.content .content-right img{
+    width: 400px;
+    height: auto;
+    position: relative;
+    animation: rotate 10s linear infinite;
+}
+@keyframes rotate {
+ 0%{
+    transform: rotate(0de);
+ }
+ 100%{
+    transform: rotate(360deg);
+ }
+}
+
+
+
+.Add button{
+    
+}
+
+
+      .footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+    text-align: left;
+}
+
+.footer-logo img {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-links div {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.footer-links a {
+    font-size: 13px;
+    color: #ccc;
+    text-decoration: none;
+    margin: 4px 0;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.find-kfc a {
+    color: #ff0033;
+    font-weight: bold;
+}
+
+.app-download img {
+    width: 150px;
+    margin: 10px 0;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a img {
+    width: 30px;
+    margin: 0 10px;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: #888;
+    margin-top: 20px;
+
+}  
+.offers {
+    padding: 30px;
+    text-align: left;
+}
+
+.offers h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.offers-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.offer-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 260px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.offer-banner {
+    background: #d71920;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.offer-banner img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.offer-card h3 {
+    font-size: 16px;
+    margin: 10px 0 5px;
+}
+
+.min-order {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.view-details {
+    font-size: 13px;
+    color: #000;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 15px;
+}
+
+button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    background: #333;
+}

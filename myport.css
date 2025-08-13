@@ -1,0 +1,12 @@
+body{
+    margin: 0px;
+    padding: 0px;
+
+}
+ 
+ .main nav{
+    border: 1px solid;
+   min-width: 59;
+    height: 50px;
+
+ }

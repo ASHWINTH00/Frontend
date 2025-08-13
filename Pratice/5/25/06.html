@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+</body>
+<script>
+
+    let mypromise = new Promise((resolve,reject) =>{
+        let flag = false;
+
+        if(flag) {
+            resolve("success");
+        }
+        else{
+            reject("Failed");
+        }
+    });
+
+    mypromise.then((result) => console.log(result));
+
+    const call = async() =>{
+      try{
+                const response = await mypromise;
+                console.log (response);
+
+      }
+      catch{
+        
+         
+      }
+ }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
